@@ -150,6 +150,10 @@ fu_dat[,"Arm"] = pre_post_dat[,"Arm"]
   # # Death of FU -> mRS and Complications + Clavien 5 + CCI 100
   #   #who dies in 30 FU
   #   fu_dat2[27,5] = "Yes"
+  
+  # Correction on Patient 16 CCI
+    fu_dat2[16, 17] = 54.2
+  
     death_ids_fu = fu_dat2[which(fu_dat2[,5] == "Yes"),1]
     if(length(death_ids_fu) > 0){
       for(i in 1:length(death_ids_fu)){
