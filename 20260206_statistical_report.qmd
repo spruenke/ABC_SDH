@@ -838,6 +838,7 @@ cp_ci = round(exp(cp_log_ci), 2)
 cp_EER = tab_raw_cp[1,2] / sum(tab_raw_cp[1,]) # Is LA experimental or control group in this interpretation?
 cp_CER = tab_raw_cp[2,2] / sum(tab_raw_cp[2,])
 cp_NNT = ceiling(round(1 / (cp_CER - cp_EER), 2))
+cp_NNT_dec = round(1 / (cp_CER - cp_EER), 2)
 ```
 
 ###### Frequencies and Proportions
@@ -865,7 +866,7 @@ The proportion of complications (Wilson-Score Confidence Interval in brackets) i
 
 ###### Odds Ratio and Number Needed to Treat
 
-The odds ratio of experiencing complications (LA) to experiencing complications (GA) together with it's asymptotic confidence interval in brackets is: `{r} cp_or_wake_full` (`{r} cp_ci[1]`, `{r} cp_ci[2]`), i.e. the odds of having complications after surgery with local anesthesia is `{r} cp_or_wake_full` -fold. The Number Needed to Treat (NNT) is `{r} cp_NNT`.
+The odds ratio of experiencing complications (LA) to experiencing complications (GA) together with it's asymptotic confidence interval in brackets is: `{r} cp_or_wake_full` (`{r} cp_ci[1]`, `{r} cp_ci[2]`), i.e. the odds of having complications after surgery with local anesthesia is `{r} cp_or_wake_full` -fold. The Number Needed to Treat (NNT) is `{r} cp_NNT` (`{r} cp_NNT_dec`).
 
 ##### Delirium at Discharge
 
@@ -904,6 +905,7 @@ ci = round(exp(log_ci), 2)
 EER = tab_raw[1,2] / sum(tab_raw[1,]) # Is LA experimental or control group in this interpretation?
 CER = tab_raw[2,2] / sum(tab_raw[2,])
 NNT = ceiling(round(1 / (CER - EER), 2))
+NNT_dec = round(1 / (CER - EER), 2)
 
 ```
 
@@ -932,7 +934,7 @@ The proportion of delirium (Wilson-Score Confidence Interval in brackets) is:
 
 ###### Odds Ratio and Number Needed to Treat
 
-The odds ratio of experiencing delirium (LA) to experiencing delirium (GA) together with it's asymptotic confidence interval in brackets is: `{r} or_wake_full` (`{r} ci[1]`, `{r} ci[2]`), i.e. the odds of having delirium after surgery with local anesthesia is `{r} or_wake_full` -fold. The Number Needed to Treat (NNT) is `{r} NNT`.
+The odds ratio of experiencing delirium (LA) to experiencing delirium (GA) together with it's asymptotic confidence interval in brackets is: `{r} or_wake_full` (`{r} ci[1]`, `{r} ci[2]`), i.e. the odds of having delirium after surgery with local anesthesia is `{r} or_wake_full` -fold. The Number Needed to Treat (NNT) is `{r} NNT` (`{r} NNT_dec`).
 
 ```{r}
 #| echo: false
@@ -1106,6 +1108,7 @@ cp_ci_fu = round(exp(cp_log_ci_fu), 2)
 cp_EER_fu = tab_raw_cp_fu[1,2] / sum(tab_raw_cp_fu[1,]) # Is LA experimental or control group in this interpretation?
 cp_CER_fu = tab_raw_cp_fu[2,2] / sum(tab_raw_cp_fu[2,])
 cp_NNT_fu = ceiling(round(1 / (cp_CER_fu - cp_EER_fu), 2))
+cp_NNT_fu_dec = round(1 / (cp_CER_fu - cp_EER_fu), 2)
 ```
 
 ###### Frequencies and Proportions
@@ -1132,7 +1135,7 @@ The proportion of complications (Wilson-Score Confidence Interval in brackets) i
 
 ###### Odds Ratio and Number Needed to Treat
 
-The odds ratio of experiencing complications (LA) to experiencing complications (GA) at 30-day follow-up together with it's asymptotic confidence interval in brackets is: `{r} cp_or_wake_full_fu` (`{r} cp_ci_fu[1]`, `{r} cp_ci_fu[2]`), i.e. the odds of having complications after surgery with local anesthesia is `{r} cp_or_wake_full_fu` -fold. The Number Needed to Treat (NNT) is `{r} cp_NNT_fu`.
+The odds ratio of experiencing complications (LA) to experiencing complications (GA) at 30-day follow-up together with it's asymptotic confidence interval in brackets is: `{r} cp_or_wake_full_fu` (`{r} cp_ci_fu[1]`, `{r} cp_ci_fu[2]`), i.e. the odds of having complications after surgery with local anesthesia is `{r} cp_or_wake_full_fu` -fold. The Number Needed to Treat (NNT) is `{r} cp_NNT_fu` (`{r} cp_NNT_fu_dec`).
 
 ##### Secondary Endpoints
 
