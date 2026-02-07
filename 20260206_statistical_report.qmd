@@ -344,7 +344,7 @@ summary_ord_groups_base = function(x, grp, decim = 1, suppress_NA = FALSE){
    n1 = sum(!is.na(g1))
    n2 = sum(!is.na(g2))
    
-   temp_df = data.frame(val = rank(x), grp = grp)
+   temp_df = data.frame(val = rank(x[!is.na(x)], na.last = NA), grp = grp[!is.na(x)])
    np_ana  = nparcomp::npar.t.test(val ~ grp, temp_df, nperm = 0, info = F)
 
   names = c("n", "%", "% without NA")
@@ -522,7 +522,7 @@ summary_nom_groups = function(x, grp, suppress_NA = FALSE, decim = 1){
   # }
 
   #if(sum(!is.na(g1)) >= 4 & sum(!is.na(g2)) >= 4){
-    pval_chisq = p_val_format(chisq.test(tot_tab)$p.value)
+    pval_chisq = p_val_format(chisq.test(tot_tab_woNA)$p.value)
   #} else {
   #  pval_chisq = NA
   #}
@@ -552,7 +552,10 @@ summary_ord_groups = function(x, grp, decim = 1, suppress_NA = FALSE){
    n1 = sum(!is.na(g1))
    n2 = sum(!is.na(g2))
    
-   temp_df = data.frame(val = rank(x), grp = grp)
+   x_temp = x[!is.na(x)]
+   grp_temp = grp[!is.na(x)]
+   
+   temp_df = data.frame(val = rank(x[!is.na(x)], na.last = NA), grp = grp[!is.na(x)])
    np_ana  = nparcomp::npar.t.test(val ~ grp, temp_df, nperm = 0, info = F)
 
   names = c("n", "%", "% without NA")
@@ -629,6 +632,7 @@ p_val_format = function(x){
   } else if(x > 0.99){
     y = "P>.99"
   }
+  return(y)
 }
 
 wilson_ci = function(x, y, alpha = 0.05, decim = 1){ # x = Successes, y = Failures
